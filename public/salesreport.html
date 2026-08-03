@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sales Report - PharmaTrack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/salesreport.css" />
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar"></aside>
+<script>
+  fetch('sidebar.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('sidebar').innerHTML = html);
+</script>
+
+<div class="main-content">
+
+  <header class="header">
+  <div class="header-left">
+    <h1>Sales Report</h1>
+    <div id="liveDateTime"></div>
+  </div>
+
+  <div class="header-right">
+    <div class="user-menu" id="userRoleDisplay"></div>
+
+    <div class="menu-wrapper">
+      <div class="profile-icon" id="menuToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4b7253" width="32" height="32">
+          <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8V19.4c0-3.3-6.6-5-9.9-5z"/>
+        </svg>
+      </div>
+
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="settings.html">Settings</a>
+        <a href="profile.html">Profile</a>
+        <a href="#" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Filters -->
+  <section class="filters">
+    <input type="date" id="startDate">
+    <input type="date" id="endDate">
+
+    <select id="productFilter">
+      <option value="">All Products</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="Search product...">
+
+    <button id="applyFilterBtn">Apply</button>
+    <button id="exportCsvBtn">Export CSV</button>
+  </section>
+
+  <!-- Summary -->
+  <section class="summary">
+    <h2>Report Summary</h2>
+    <table>
+      <tbody>
+        <tr><td>Total Transactions</td><td id="sumTransactions">0</td></tr>
+        <tr><td>Total Sales</td><td id="sumSales">₱0.00</td></tr>
+        <tr><td>Top Selling Product</td><td id="sumTopProduct">-</td></tr>
+        <tr><td>Highest Sales Day</td><td id="sumBestDay">-</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Period Selector -->
+  <div class="period-filter">
+    <button data-period="daily">Daily</button>
+    <button data-period="weekly">Weekly</button>
+    <button data-period="monthly">Monthly</button>
+  </div>
+
+  <!-- Sales Table -->
+  <section>
+    <h2>Sales Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Transactions</th>
+          <th>Items Sold</th>
+          <th>Total Revenue</th>
+          <th>Top Product</th>
+        </tr>
+      </thead>
+      <tbody id="reportTable"></tbody>
+    </table>
+  </section>
+
+  <!-- Graph -->
+  <section class="chart-section">
+    <h2>Sales Graph</h2>
+    <canvas id="salesChart"></canvas>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/salesreport.js"></script>
+</body>
+</html>

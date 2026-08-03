@@ -1,0 +1,253 @@
+/* ===========================
+   Reset & Body
+=========================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f5f3;
+}
+
+/* ===========================
+   Main Content
+=========================== */
+.main-content {
+  margin-left: 220px;
+  padding: 20px 20px 20px; /* header moves up */
+}
+
+
+/* ===========================
+   Header
+=========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: #f4f5f3;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+.header h1 {
+  color: #2e3d2f;
+  margin: 0;
+}
+
+.user-menu {
+  font-weight: bold;
+  color: #5b6b5a;
+}
+
+/* ===========================
+   Settings Container
+=========================== */
+.settings-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 1100px;
+}
+
+/* ===========================
+   Settings Cards
+=========================== */
+.settings-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.settings-card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #2e3d2f;
+}
+
+/* ===========================
+   Profile Image
+=========================== */
+/* ===========================
+   Profile Image & Form Alignment
+=========================== */
+.profile-image {
+  display: flex;
+  flex-direction: column; /* stack image + upload vertically */
+  align-items: center;    /* center horizontally */
+  gap: 12px;              /* space between image and button */
+  margin-bottom: 25px;
+}
+
+.profile-image img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #80b192;
+}
+
+.upload-btn {
+  padding: 8px 14px;
+  background: #e8efe9;
+  color: #2e3d2f;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.upload-btn:hover {
+  background: #cfe3d6;
+}
+
+/* Ensure form groups take full width and start below photo */
+.settings-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ===========================
+   Form Groups
+=========================== */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #5b6b5a;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #80b192;
+  box-shadow: 0 0 5px rgba(128,177,146,0.4);
+}
+
+.form-group input:disabled {
+  background: #f0f2f0;
+  color: #888;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+.btn-primary,
+.btn-danger {
+  padding: 4px 10px;       /* smaller vertical & horizontal size */
+  border-radius: 6px;      /* slightly rounded corners */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  height: 30px;             /* fix button height */
+  line-height: 30px;        /* vertically center text */
+}
+
+.btn-primary {
+  background: #4b7253;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #80b192;
+}
+
+.btn-danger {
+  background: #b84c4c;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background: #d96b6b;
+}
+
+
+/* ===========================
+   Status Message
+=========================== */
+.status-message {
+  grid-column: span 2;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2e3d2f;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 900px) {
+  .settings-container {
+    grid-template-columns: 1fr;
+  }
+
+  .status-message {
+    grid-column: span 1;
+  }
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+#liveDateTime {
+  font-size: 0.95rem;
+  color: #5b6b5a;
+  margin-top: 4px;
+}
+
+/* Profile icon */
+.profile-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.profile-icon:hover {
+  background: rgba(75, 114, 83, 0.1);
+}
+
+/* Dropdown */
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+  background: #f4f5f3;
+}

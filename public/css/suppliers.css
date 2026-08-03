@@ -1,0 +1,447 @@
+/* ===========================
+   Page & Reset
+=========================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f5f3;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+
+
+.sidebar ul li a.active,
+.sidebar ul li a:hover {
+  background: #80b192;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+/* ===========================
+   Main Content
+=========================== */
+.main-content {
+  margin-left: 220px;
+  padding: 30px 30px 20px 30px; /* ⬅ reduced top padding */
+}
+
+
+/* ===========================
+   Add Supplier Button
+=========================== */
+
+#addSupplierBtn:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   Table Styling
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background: #80b192;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===========================
+   Edit/Delete Buttons
+=========================== */
+button.edit, button.delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.85rem;
+}
+
+button.edit {
+  background: #5b6b5a;
+}
+
+button.delete {
+  background: #d9534f;
+}
+
+button.edit:hover,
+button.delete:hover {
+  opacity: 0.85;
+}
+
+/* ===========================
+   Modal Styling
+=========================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 7% auto;
+  padding: 25px;
+  width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.close {
+  float: right;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #4b7253;
+}
+
+.close:hover {
+  color: #80b192;
+}
+
+.modal form div {
+  margin-bottom: 15px;
+}
+
+.modal form label {
+  font-weight: bold;
+  color: #5b6b5a;
+}
+
+.modal form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal form input:focus {
+  border-color: #80b192;
+}
+
+.modal form button {
+  padding: 10px 15px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.modal form button:hover {
+  background: #80b192;
+}
+
+#userRoleDisplay {
+  display: none;
+}
+
+/* ===========================
+   Header (Title + Date + Profile)
+=========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: transparent;
+  padding: 0;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-left h1 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  margin: 0;
+  margin-right: 300px;
+}
+
+.header-left #liveDateTime {
+  font-size: 0.95rem;
+  color: #5b6b5a;
+  margin-top: 4px;
+  margin-right: 310px
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.profile-icon:hover {
+  background: rgba(75, 114, 83, 0.1);
+}
+
+/* Dropdown Menu */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+  background: #f4f5f3;
+}
+
+
+/* ===========================
+   Controls Bar (Search + Add Supplier)
+=========================== */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.controls-bar .search-input {
+  flex: 0 0 180px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.controls-bar .search-input:focus {
+  border-color: #80b192;
+  outline: none;
+}
+
+#addSupplierBtn {
+  padding: 12px 18px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#addSupplierBtn:hover {
+  background: #80b192;
+}
+
+
+/* ===========================
+   Re-Order Section
+=========================== */
+.reorder-section {
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #4b7253;
+}
+
+.section-header p {
+  margin: 6px 0 16px;
+  font-size: 0.9rem;
+  color: #6c7a6a;
+}
+
+.reorder-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reorder-table th,
+.reorder-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+
+.reorder-table th {
+  background: #f5f7f5;
+  color: #3f5f45;
+  font-weight: 600;
+}
+
+.reorder-table tr:hover {
+  background: #f9fbf9;
+}
+
+.reorder-btn {
+  background: #4b7253;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.reorder-btn:hover {
+  background: #3c5f45;
+}
+
+/* ===========================
+   Reorder Table Buttons
+=========================== */
+.reorder-table button.edit-reorder {
+  background: #5b6b5a; /* same as main table edit button */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-right: 5px;
+}
+
+.reorder-table button.edit-reorder:hover {
+  opacity: 0.85;
+}
+
+.reorder-table button.send-reorder {
+  background: #4b7253; /* existing style */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.reorder-table button.send-reorder:hover {
+  background: #3c5f45;
+}
+
+/* ===========================
+   Category Dropdown Styling
+=========================== */
+#supplierCategory {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 0.95rem;
+  color: #2e3d2f;
+  appearance: none; /* remove default arrow in most browsers */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234b7253"><path d="M4 6l4 4 4-4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#supplierCategory:focus {
+  border-color: #80b192;
+  box-shadow: 0 0 4px rgba(128, 177, 146, 0.5);
+  outline: none;
+}
+
+#supplierCategory option {
+  padding: 8px;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   Order History Section
+=========================== */
+.order-history-section {
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.order-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-history-table th,
+.order-history-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+
+.order-history-table th {
+  background: #f5f7f5;
+  color: #3f5f45;
+  font-weight: 600;
+}
+
+.order-history-table tr:hover {
+  background: #f9fbf9;
+}
+
+.status-pending {
+  background: #f0ad4e;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.status-delivered {
+  background: #5cb85c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+

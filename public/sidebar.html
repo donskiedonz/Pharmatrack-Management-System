@@ -1,0 +1,23 @@
+<div class="sidebar-header">
+  <a href="dashboard.html">
+    <h2>UnoPharmacy</h2>
+  </a>
+</div>
+<ul class="sidebar-menu">
+  <li><a href="dashboard.html">Dashboard</a></li>
+  <li class="admin-only"><a href="users.html">Users</a></li>
+  <li><a href="products.html">Inventory Management</a></li>
+  <li><a href="categories.html">Category Management</a></li>
+  <li><a href="sales.html">Sales</a></li>
+  <li><a href="salesreport.html">Sales Report</a></li>
+  <li><a href="suppliers.html">Suppliers Information</a></li>
+  <li class="admin-only"><a href="settings.html">Settings</a></li>
+</ul>
+
+<script>
+// ===== Role-based Sidebar =====
+const role = sessionStorage.getItem('userRole') || 'pharmacist';
+if(role !== 'admin') {
+  document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+}
+</script>

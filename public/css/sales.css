@@ -1,0 +1,341 @@
+/* ===========================
+   Page Reset & Background
+=========================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f5f3;
+}
+
+/* ===========================
+   Main Content
+=========================== */
+.main-content {
+  margin-left: 220px; /* space for sidebar */
+  padding: 30px 30px 20px 30px;
+}
+
+/* ===========================
+   Header (Title + Live Date + Profile)
+=========================== */
+.header {
+  display: flex;
+  justify-content: space-between; /* left title, right info */
+  align-items: center;
+  margin-bottom: 20px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Left side: title + date */
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-left h1 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  margin: 0;
+  margin-right: 125px;
+}
+
+.header-left #liveDateTime {
+  font-size: 0.95rem;
+  color: #5b6b5a;
+  margin-top: 4px;
+}
+
+/* Right side: profile icon toggle */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative; /* for dropdown */
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.profile-icon:hover {
+  background: rgba(75, 114, 83, 0.1);
+}
+
+/* Dropdown Menu */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+  background: #f4f5f3;
+}
+
+/* ===========================
+   Controls: Search + Date Filter + Add Button
+=========================== */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add Sale button stays far right */
+  margin-bottom: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.search-date-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.controls input[type="text"] {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 200px;
+  min-width: 150px;
+}
+
+.date-filters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-filters input[type="date"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 0;
+}
+
+.date-filters label {
+  font-weight: bold;
+  color: #5b6b5a;
+}
+
+#addSaleBtn {
+  padding: 12px 18px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#addSaleBtn:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   Table Styling
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background: #80b192;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===========================
+   Edit/Delete Buttons
+=========================== */
+button.edit, button.delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.85rem;
+}
+
+button.edit {
+  background: #5b6b5a;
+}
+
+button.delete {
+  background: #d9534f;
+}
+
+button.edit:hover,
+button.delete:hover {
+  opacity: 0.85;
+}
+
+/* ===========================
+   Modal Styling
+=========================== */
+/* ===========================
+   Modal Styling (Centered)
+=========================== */
+.modal {
+  display: none;            /* hide initially */
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  /* Center content using flexbox */
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+}
+
+.modal.show {
+  display: flex;            /* show modal when .show is added */
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 90%;          /* prevent overflow */
+  overflow-y: auto;         /* scroll if content is taller */
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+.close {
+  float: right;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #4b7253;
+}
+
+.close:hover {
+  color: #80b192;
+}
+
+.modal form div {
+  margin-bottom: 15px;
+}
+
+.modal form label {
+  font-weight: bold;
+  color: #5b6b5a;
+}
+
+.modal form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal form input:focus {
+  border-color: #80b192;
+  outline: none;
+}
+
+.modal form button {
+  padding: 10px 15px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal form button:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   Hide user role display (optional)
+=========================== */
+#userRoleDisplay {
+  display: none;
+}
+
+/* ===========================
+   Styled Product Dropdown
+=========================== */
+.modal form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  appearance: none; /* remove default arrow in most browsers */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><polygon points='0,0 16,0 8,8' style='fill:%23666'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.modal form select:focus {
+  border-color: #80b192;
+  outline: none;
+  box-shadow: 0 0 5px rgba(128,177,146,0.5);
+}
+
+/* Optional: hover effect */
+.modal form select:hover {
+  border-color: #5b6b5a;
+}

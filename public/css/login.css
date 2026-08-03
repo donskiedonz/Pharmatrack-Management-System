@@ -1,0 +1,193 @@
+/* ===========================
+   Reset & Body
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Background image */
+  background: url('../img/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Dark overlay for readability */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* Optional subtle moving background effect */
+body::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveBg 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveBg {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-50px,50px); }
+}
+
+/* ===========================
+   Login Container
+=========================== */
+.login-container {
+  position: relative;
+  z-index: 1; /* above overlay */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 14px;
+  width: 360px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  text-align: center;
+
+  /* Fade in + slide up animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlideUp 0.8s forwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   Header / Title
+=========================== */
+.login-container h1 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(270deg, #80b192, #4b7253, #80b192);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 6s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===========================
+   Form Groups & Floating Labels
+=========================== */
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  pointer-events: none;
+  color: #5b6b5a;
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
+  background: rgba(255,255,255,0.95);
+  padding: 0 4px;
+  font-size: 0.95rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.25s ease-in-out;
+}
+
+input:focus, select:focus {
+  border-color: #80b192;
+  box-shadow: 0 0 8px rgba(128,177,146,0.3);
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label,
+select:focus + label,
+select:not([value=""]) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #4b7253;
+}
+
+/* ===========================
+   Button
+=========================== */
+button {
+  width: 100%;
+  padding: 14px 0;
+  background: linear-gradient(135deg, #4b7253, #80b192);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #80b192, #4b7253);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* ===========================
+   Error Message
+=========================== */
+.error-msg {
+  color: #d9534f;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.error-msg.show {
+  opacity: 1;
+}
+

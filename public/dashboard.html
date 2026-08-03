@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaTrack Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar"></aside>
+  <script>
+    fetch('sidebar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('sidebar').innerHTML = html);
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Dashboard</h1>
+        <div id="liveDateTime" class="header-date"></div>
+      </div>
+
+      <div class="header-right">
+        <div class="user-role" id="userRoleDisplay"></div>
+
+        <div class="menu-wrapper">
+          <div class="profile-icon" id="menuToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4b7253" width="32" height="32">
+              <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8V19.4c0-3.3-6.6-5-9.9-5z"/>
+            </svg>
+          </div>
+
+          <div class="menu-dropdown" id="menuDropdown">
+            <a href="settings.html">Settings</a>
+            <a href="profile.html">Profile</a>
+            <a href="#" id="logoutBtn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Shortcut Buttons -->
+    <section class="shortcut-buttons">
+      <button class="shortcut-btn" onclick="location.href='users.html'">Users</button>
+      <button class="shortcut-btn" onclick="location.href='categories.html'">Categories</button>
+      <button class="shortcut-btn" onclick="location.href='products.html'">Inventory</button>
+      <button class="shortcut-btn" onclick="location.href='sales.html'">Sales</button>
+      <button class="shortcut-btn" onclick="location.href='salesreport.html'">Reports</button>
+      <button class="shortcut-btn" onclick="location.href='suppliers.html'">Suppliers</button>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards-section" id="cardsSection"></section>
+
+    <!-- AI Assistant -->
+    <section class="ai-section">
+      <div class="ai-card">
+        <h3>PharmaPal – AI Inventory Assistant</h3>
+
+        <div id="aiChatBody" class="ai-chat-body"></div>
+
+        <div class="ai-quick-actions">
+          <button class="ai-btn" data-command="low stock">Low Stock</button>
+          <button class="ai-btn" data-command="all products">Show All Products</button>
+        </div>
+
+        <div class="ai-input-area">
+          <input
+            type="text"
+            id="aiUserInput"
+            placeholder="Ask about stock, demand forecast, restocking..."
+          />
+          <button id="aiSendBtn">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-section">
+      <div class="chart-box">
+        <h3>Stock Levels</h3>
+        <canvas id="stockChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Top Selling Products</h3>
+        <canvas id="salesChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section class="alerts-section">
+      <div class="alert-box">
+        <h3>Low Stock Alerts</h3>
+        <ul id="lowStockList"></ul>
+      </div>
+
+      <div class="alert-box">
+        <h3>Smart Restocking Predictions</h3>
+        <ul id="restockList"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Chart Modal (logic handled in dashboard.js) -->
+  <div id="chartModal" class="chart-modal">
+    <div class="chart-modal-content">
+      <span id="chartModalClose" class="chart-modal-close">&times;</span>
+      <h3 id="chartModalTitle"></h3>
+      <canvas id="chartModalCanvas"></canvas>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/dashboard.js"></script>
+  <script src="js/aiChat.js"></script>
+
+</body>
+</html>

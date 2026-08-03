@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - PharmaTrack</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar"></aside>
+  <script>
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("sidebar").innerHTML = html);
+  </script>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Page Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Inventory Management</h1>
+        <div id="liveDateTime" style="font-size:0.95rem; color:#5b6b5a; margin-top:4px;"></div>
+      </div>
+
+      <div class="header-right" style="display:flex; align-items:center; gap:10px;">
+        <!-- User role display -->
+        <div class="user-menu" id="userRoleDisplay"></div>
+
+        <!-- Profile toggle -->
+        <div class="menu-wrapper" style="position:relative;">
+          <div class="profile-icon" id="menuToggle" style="cursor:pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4b7253" width="32" height="32">
+              <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8V19.4c0-3.3-6.6-5-9.9-5z"/>
+            </svg>
+          </div>
+
+          <div class="menu-dropdown" id="menuDropdown" style="display:none; position:absolute; right:0; top:40px; background:#fff; border:1px solid #ccc; border-radius:8px; min-width:140px; box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:10;">
+            <a href="settings.html" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Settings</a>
+            <a href="profile.html" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Profile</a>
+            <a href="#" id="logoutBtn" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search product..." />
+
+        <select id="filterCategory">
+          <option value="">All Categories</option>
+        </select>
+
+        <select id="filterExpiry">
+          <option value="">Expiry</option>
+          <option value="expired">Expired</option>
+          <option value="soon">Expiring Soon</option>
+        </select>
+
+        <select id="filterQuantity">
+          <option value="">Stock</option>
+          <option value="low">Low Stock</option>
+          <option value="out">Out of Stock</option>
+        </select>
+      </div>
+
+      <button id="addProductBtn">Add Product</button>
+    </div>
+
+    <!-- Products Table -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Expiry</th>
+      <th>Supplier</th> <!-- NEW COLUMN -->
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="products-table"></tbody>
+</table>
+
+
+<!-- ===========================
+     Alerts & Predictions
+=========================== -->
+<section class="alerts-section">
+  <div class="alert-box">
+    <h3>Low Stock Alerts</h3>
+    <ul id="lowStockList"></ul>
+  </div>
+  <div class="alert-box">
+    <h3>Smart Restocking Predictions</h3>
+    <ul id="restockList"></ul>
+  </div>
+</section>
+
+
+  </div>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Add Product</h2>
+
+      <form id="productForm">
+        <input type="hidden" id="productIndex" />
+
+        <div>
+          <label>Product Image</label>
+          <input type="file" id="productImage" accept="image/*" />
+        </div>
+
+        <div class="image-preview">
+          <img id="imagePreview" />
+        </div>
+
+        <div>
+          <label>Name</label>
+          <input type="text" id="productName" required />
+        </div>
+
+        <div>
+          <label>Category</label>
+          <select id="productCategory" required>
+            <option value="">-- Select Category --</option>
+          </select>
+        </div>
+
+       <div>
+  <label>Supplier</label>
+  <select id="productSupplier" required>
+    <option value="">-- Select Supplier --</option>
+  </select>
+</div>
+
+
+        <div>
+          <label>Quantity</label>
+          <input type="number" id="productQuantity" required />
+        </div>
+
+        <div>
+          <label>Price</label>
+          <input type="number" id="productPrice" step="0.01" required />
+        </div>
+
+        <div>
+          <label>Expiry Date</label>
+          <input type="date" id="productExpiry" required />
+        </div>
+
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Image Preview Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="imageModalClose">&times;</span>
+      <h2>Product Image</h2>
+      <img id="largeImage" style="max-width:100%; margin-bottom:10px;" />
+      <form id="updateImageForm"></form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/products.js"></script>
+
+  <script>
+    // Profile dropdown toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menuDropdown = document.getElementById('menuDropdown');
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menuDropdown.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuDropdown.style.display = 'none';
+        }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+/* ===========================
+   RESET & BASE
+=========================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f4;
+  color: #34423d;
+}
+
+/* ===========================
+   MAIN LAYOUT
+=========================== */
+.main-content {
+  margin-left: 220px;
+  padding: 20px 30px 30px; /* top reduced from 80px to 20px */
+}
+
+
+/* ===========================
+   HEADER
+=========================== */
+/* ===========================
+   Header (Title + Live Date + Profile)
+=========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;                /* remove extra bottom margin */
+  padding: 10px 30px;       /* top/bottom 10px, left/right 30px */
+  background: transparent;
+  position: relative;        /* keep menu dropdown relative */
+  top: 0;
+}
+
+/* Left side: title + date */
+.header-left {
+  display: flex;
+  flex-direction: column; /* keep stacked title + date */
+  align-items: flex-start; /* align both to the left */
+  justify-content: center; /* vertical centering (optional) */
+}
+
+
+.header-left h1 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  margin: 0;
+}
+
+.header-left #liveDateTime {
+  margin-top: 4px;      /* space below the title */
+  font-size: 0.95rem;
+  color: #5b6b5a;
+  text-align: left;     /* ensures it is left-aligned */
+}
+
+
+/* Right side: profile icon toggle */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.profile-icon:hover {
+  background: rgba(75, 114, 83, 0.1);
+}
+
+/* Dropdown Menu */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 50px; /* adjust distance from icon */
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+
+/* ===========================
+   FILTER BAR
+=========================== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.filters input,
+.filters select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d5ddd8;
+  font-size: 0.9rem;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #80b192;
+}
+
+.filters button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #4b7253;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.filters button:hover {
+  background: #80b192;
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   SUMMARY CARD
+=========================== */
+.summary {
+  background: linear-gradient(180deg, #ffffff, #f8fbf9);
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 35px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.summary h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2e3d2f;
+}
+
+.summary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary td {
+  padding: 10px 12px;
+}
+
+.summary td:first-child {
+  font-weight: 600;
+  color: #5b6b5a;
+}
+
+.summary td:last-child {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+/* ===========================
+   PERIOD FILTER
+=========================== */
+.period-filter {
+  margin: 20px 0 25px;
+}
+
+.period-filter button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #5b6b5a;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.period-filter button:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   TABLE CARD
+=========================== */
+.table-card {
+  background: linear-gradient(180deg, #ffffff, #f9fbf9);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 40px;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ===========================
+   TABLE STYLING
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+thead th {
+  background: linear-gradient(135deg, #5f8f73, #80b192);
+  color: #fff;
+  padding: 14px;
+  font-size: 0.8rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+tbody td {
+  padding: 14px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #e1e7e3;
+}
+
+tbody tr:nth-child(even) {
+  background: #f6faf7;
+}
+
+tbody tr:hover {
+  background: #e7f2ec;
+  box-shadow: inset 4px 0 0 #80b192;
+  transition: all 0.15s ease-in-out;
+}
+
+/* ===========================
+   DATA EMPHASIS
+=========================== */
+td.revenue {
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+td.top-product {
+  font-weight: 600;
+  color: #4b7253;
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+button.edit,
+button.delete {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.15s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+button.edit {
+  background: #5b6b5a;
+}
+
+button.delete {
+  background: #d9534f;
+}
+
+button.edit:hover {
+  background: #6f8570;
+  transform: translateY(-1px);
+}
+
+button.delete:hover {
+  background: #c9302c;
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   CHART SECTION
+=========================== */
+.chart-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  margin-top: 40px;
+}
+
+.chart-section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2e3d2f;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0;
+    padding: 90px 20px;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 10px 8px;
+  }
+}
+
+/* ===========================
+   HEADER ALIGNMENT (Sales-style)
+=========================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-left h1 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  margin: 0;
+}
+
+#liveDateTime {
+  font-size: 0.95rem;
+  color: #5b6b5a;
+  margin-top: 4px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Profile Icon */
+.profile-icon {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.profile-icon:hover {
+  background: rgba(75,114,83,0.1);
+}
+
+/* Dropdown */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 42px;
+  background: #fff;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+  background: #f4f6f4;
+}
+
+#userRoleDisplay {
+  display: none;
+}

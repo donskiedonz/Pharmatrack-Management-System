@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suppliers - PharmaTrack</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/suppliers.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar"></aside>
+  <script>
+    fetch('sidebar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('sidebar').innerHTML = html);
+  </script>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <h1>Supplier Information</h1>
+    <div id="liveDateTime" style="font-size:0.95rem; color:#5b6b5a; margin-top:4px;"></div>
+  </div>
+
+  <div class="header-right" style="display:flex; align-items:center; gap:10px;">
+    <!-- User role display -->
+    <div class="user-menu" id="userRoleDisplay"></div>
+
+    <!-- Profile toggle -->
+    <div class="menu-wrapper" style="position:relative;">
+      <div class="profile-icon" id="menuToggle" style="cursor:pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4b7253" width="32" height="32">
+          <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8V19.4c0-3.3-6.6-5-9.9-5z"/>
+        </svg>
+      </div>
+
+      <!-- Dropdown -->
+      <div class="menu-dropdown" id="menuDropdown"
+        style="display:none; position:absolute; right:0; top:40px; background:#fff;
+        border:1px solid #ccc; border-radius:8px; min-width:140px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:10;">
+        <a href="settings.html">Settings</a>
+        <a href="profile.html">Profile</a>
+        <a href="#" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <!-- Controls Bar: Search + Add Supplier -->
+<div class="controls-bar">
+
+  <!-- Search -->
+  <input
+    type="text"
+    id="searchInput"
+    class="search-input"
+    placeholder="Search suppliers..."
+  />
+
+  <!-- Add Supplier Button -->
+  <button id="addSupplierBtn">Add Supplier</button>
+
+</div>
+
+
+    <!-- Supplier Table -->
+    <table>
+      <thead>
+  <tr>
+    <th>Supplier Name</th>
+    <th>Category</th>
+    <th>Contact</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+
+      <tbody id="suppliers-table">
+        <!-- populated by suppliers.js -->
+      </tbody>
+    </table>
+
+    <!-- Re-Order Section -->
+<section class="reorder-section">
+
+  <div class="section-header">
+    <h2>Re-Order Suggestions</h2>
+    <p>Low stock products ready for supplier re-order</p>
+  </div>
+
+  <table class="reorder-table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Current Qty</th>
+        <th>Suggested Order</th>
+        <th>Supplier</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody id="reorderTable">
+      <!-- populated via JS -->
+    </tbody>
+  </table>
+
+</section>
+<!-- Order History Section -->
+<section class="order-history-section">
+
+  <div class="section-header">
+    <h2>Order History</h2>
+    <p>Track previous orders sent to suppliers</p>
+  </div>
+
+  <table class="order-history-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Supplier</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Order Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody id="orderHistoryTable">
+      <!-- populated via JS -->
+    </tbody>
+  </table>
+
+</section>
+
+
+
+
+
+  </div>
+
+  <!-- Modal -->
+  <div id="supplierModal" class="modal">
+    <div class="modal-content">
+
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Add Supplier</h2>
+
+      <form id="supplierForm">
+        <input type="hidden" id="supplierIndex">
+
+        <div>
+          <label for="supplierName">Supplier Name</label>
+          <input type="text" id="supplierName" required>
+        </div>
+
+        <div>
+
+  <label for="supplierCategory">Category</label>
+  <select id="supplierCategory" required>
+    <option value="">-- Select Category --</option>
+  
+  </select>
+</div>
+
+
+
+        <div>
+          <label for="supplierContact">Contact</label>
+          <input type="text" id="supplierContact" required>
+        </div>
+
+        <div>
+          <label for="supplierEmail">Email</label>
+          <input type="email" id="supplierEmail" required>
+        </div>
+
+        <div>
+          <label for="supplierAddress">Address</label>
+          <input type="text" id="supplierAddress" required>
+        </div>
+
+        <button type="submit">Save Supplier</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Page Script -->
+  <script src="js/suppliers.js"></script>
+
+</body>
+</html>

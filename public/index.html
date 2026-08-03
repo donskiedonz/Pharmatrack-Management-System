@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaTrack Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <!-- Animated Gradient Title -->
+    <h1>Uno Pharmacy</h1>
+
+    <form id="loginForm">
+      <!-- Username -->
+      <div class="form-group">
+        <input type="text" id="username" placeholder=" " required>
+        <label for="username">Username</label>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <input type="password" id="password" placeholder=" " required>
+        <label for="password">Password</label>
+      </div>
+
+      <!-- Role Select -->
+      <div class="form-group">
+        <select id="role" required>
+          <option value="" disabled selected></option>
+          <option value="admin">Admin</option>
+          <option value="pharmacist">Pharmacist</option>
+        </select>
+        <label for="role">Role</label>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="btn-login">Login</button>
+
+      <!-- Error Message -->
+      <p id="error-msg" class="error-msg"></p>
+    </form>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

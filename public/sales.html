@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales - PharmaTrack</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sales.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar"></aside>
+  <script>
+    fetch('sidebar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('sidebar').innerHTML = html);
+  </script>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="header">
+      <div class="header-left">
+        <h1>Sales</h1>
+        <div id="liveDateTime" style="font-size:0.95rem; color:#5b6b5a; margin-top:4px;"></div>
+      </div>
+
+      <div class="header-right" style="display:flex; align-items:center; gap:10px;">
+        <!-- User role display -->
+        <div class="user-menu" id="userRoleDisplay"></div>
+
+        <!-- Profile toggle -->
+        <div class="menu-wrapper" style="position:relative;">
+          <div class="profile-icon" id="menuToggle" style="cursor:pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4b7253" width="32" height="32">
+              <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8V19.4c0-3.3-6.6-5-9.9-5z"/>
+            </svg>
+          </div>
+
+          <!-- Dropdown menu -->
+          <div class="menu-dropdown" id="menuDropdown" style="display:none; position:absolute; right:0; top:40px; background:#fff; border:1px solid #ccc; border-radius:8px; min-width:140px; box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:10;">
+            <a href="settings.html" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Settings</a>
+            <a href="profile.html" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Profile</a>
+            <a href="#" id="logoutBtn" style="display:block; padding:8px 12px; color:#333; text-decoration:none;">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="search-date-group">
+        <input type="text" id="searchInput" placeholder="Search sales...">
+        <div class="date-filters">
+          <label for="startDate">From:</label>
+          <input type="date" id="startDate">
+          <label for="endDate">To:</label>
+          <input type="date" id="endDate">
+        </div>
+      </div>
+      <button id="addSaleBtn">Add Sale</button>
+    </div>
+
+    <!-- Sales Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Total Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="sales-table">
+        <!-- Dynamic rows inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  
+<div id="saleModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle">Add Sale</h2>
+    <form id="saleForm">
+      <input type="hidden" id="saleIndex">
+
+      <div>
+        <label>Customer:</label>
+        <input type="text" id="saleCustomer" placeholder="Enter customer name" required>
+      </div>
+
+      <div>
+        <label>Product:</label>
+        <select id="saleProduct"></select>
+      </div>
+
+      <div>
+        <label>Quantity:</label>
+        <input type="number" id="saleQuantity" min="1" value="1" required>
+      </div>
+
+      <div>
+        <label>Unit Price:</label>
+        <input type="text" id="salePrice">
+      </div>
+
+      <div>
+        <label>Total:</label>
+        <input type="text" id="saleTotal">
+      </div>
+
+      <div>
+        <label>Date:</label>
+        <input type="date" id="saleDate" required>
+      </div>
+
+      <div class="flex justify-between mt-4">
+        <button type="submit">Record Sale</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <script src="js/sales.js" type="module"></script>
+</body>
+</html>

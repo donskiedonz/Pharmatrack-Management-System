@@ -1,0 +1,382 @@
+/* ===========================
+   Reset & Base Styles
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  line-height: 1.5;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* ===========================
+   Header & Footer
+=========================== */
+header, footer {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   Layout & Sidebar
+=========================== */
+main {
+  flex: 1;
+  display: flex;
+  margin-top: 0;
+}
+
+.sidebar {
+  width: 220px;
+  background: #4b7253; /* dashboard green */
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding-top: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 5px;
+}
+
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+  background: #80b192; /* dashboard highlight */
+  color: #fff; /* ensure text stays white */
+}
+
+/* ===========================
+   Main Content Area
+=========================== */
+.main-content {
+  flex: 1;
+  margin-left: 220px; /* space for sidebar */
+  padding: 80px 30px 20px 30px;
+  display: block;
+}
+
+/* ===========================
+   Cards
+=========================== */
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  flex: 1;
+  background: #17a2b8;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ===========================
+   Tables
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* ===========================
+   Form & Buttons
+=========================== */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form input, form button {
+  padding: 10px;
+  font-size: 16px;
+  flex: 1 1 150px;
+}
+
+form button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  flex: 1 1 100px;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+/* Add Product Button */
+#addProductBtn {
+  margin-bottom: 20px;
+  padding: 12px 18px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#addProductBtn:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   Table Buttons
+=========================== */
+button.edit {
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background 0.3s;
+}
+
+button.edit:hover {
+  background-color: #e0a800;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+/* ===========================
+   Modals
+=========================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 7% auto;
+  padding: 25px;
+  width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.close {
+  float: right;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #4b7253;
+}
+
+.close:hover {
+  color: #80b192;
+}
+
+.modal form div {
+  margin-bottom: 15px;
+}
+
+.modal form label {
+  font-weight: bold;
+  color: #5b6b5a;
+}
+
+.modal form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal form input:focus {
+  border-color: #80b192;
+}
+
+.modal form button {
+  padding: 10px 15px;
+  background: #4b7253;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal form button:hover {
+  background: #80b192;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-menu li {
+    flex: 1;
+    text-align: center;
+    border-bottom: none;
+    border-right: 1px solid #495057;
+    margin: 0;
+  }
+}
+
+.sidebar-header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-header a:hover {
+  opacity: 0.8; /* optional hover effect */
+}
+
+.menu-wrapper {
+    position: relative;
+}
+
+.menu-icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.menu-dropdown a i {
+    margin-right: 8px;
+    color: #4b7253; /* match your green theme */
+}
+
+.menu-dropdown a:hover i {
+    color: #80b192; /* hover green */
+}
+
+.menu-dropdown a:hover {
+    background: #f2f2f2;
+}
+
+
+/* Profile icon for dropdown */
+.profile-icon {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4b7253; /* dashboard green */
+  border-radius: 50%; /* circular */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.profile-icon svg {
+  width: 60%;
+  height: 60%;
+  fill: #fff; /* icon white for contrast */
+}
+
+.profile-icon:hover {
+  background-color: #80b192; /* lighter green on hover */
+  transform: scale(1.05); /* small pop effect */
+}
+
+
+
+
+
+
+
+
